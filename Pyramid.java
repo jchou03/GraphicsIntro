@@ -26,8 +26,23 @@ public class Pyramid extends GraphicsProgram {
 	
 	public void run() {
 		/* You fill this in. */
+		drawRow(14,1);
+		drawRow(13,2);
+		//drawBrick(0,-1*BRICK_HEIGHT + getHeight(),BRICK_WIDTH,BRICK_HEIGHT);
 	}
 
-	//public void drawBrick
+	public void drawBrick(int x, int y, int width, int height) {
+		GRect rect = new GRect(x,y,width,height);
+		add(rect);
+	}
+	public void drawRow(int brickNum, int layer){
+		if(layer%2 == 1) {
+			int layerHeight = getHeight() - layer * BRICK_HEIGHT;
+			for (int i = -brickNum / 2; i < brickNum / 2; i++) {
+				System.out.println("i: " + i);
+				drawBrick(getWidth() / 2 + i * BRICK_WIDTH, layerHeight, BRICK_WIDTH, BRICK_HEIGHT);
+			}
+		}
+	}
 }
 
